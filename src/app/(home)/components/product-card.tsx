@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +20,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import ToppingList from "./topping-list";
 import { ShoppingCart } from "lucide-react";
+import { useAppDispatch } from "@/lib/store/hooks";
+import { add } from "@/lib/store/features/cart/cartSlice";
 
 export type Product = {
   id: string;
@@ -31,6 +34,13 @@ export type Product = {
 type PropTypes = { product: Product };
 
 const ProductCard = ({ product }: PropTypes) => {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (productId: string) => {
+    dispatch(add(productId));
+
+    console.log("Adding to cart", productId);
+  };
   return (
     <Card className="border-none rounded-xl">
       <CardHeader className="flex items-center justify-center">
@@ -51,7 +61,7 @@ const ProductCard = ({ product }: PropTypes) => {
           <span className="font-bold">₹{product.price}</span>
         </p>
 
-        <button>Add to cart</button>
+        <button onClick={() => handleAddToCart(product.id)}>Add to cart</button>
 
         {/* <Dialog>
           <DialogTrigger className="bg-orange-200 hover:bg-orange-300 text-orange-500 px-6 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-250">

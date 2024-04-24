@@ -7,8 +7,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import { Phone, ShoppingBasket } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Button } from "../ui/button";
+import ShoppingBasketIcon from "./ShoppingBasketIcon";
 
 const Header = () => {
   return (
@@ -62,15 +63,7 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="relative">
-            <Link href={"/cart"}>
-              <ShoppingBasket className="hover:text-primary" />
-            </Link>
-
-            <span className="absolute -top-4 -right-5 w-6 h-6 flex items-center justify-center rounded-full bg-orange-600 font-bold text-white">
-              3
-            </span>
-          </div>
+          <ShoppingBasketIcon />
 
           <div className=" flex items-center gap-x-2 ml-12 ">
             <Phone className="" />

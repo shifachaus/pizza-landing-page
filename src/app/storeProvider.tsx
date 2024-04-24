@@ -12,7 +12,7 @@ const StoreProvider = ({ children }: { children: ReactNode }) => {
     storeRef.current = makeStore();
 
     // add initial state
-    storeRef.current.dispatch(add("testProductId"));
+    // storeRef.current.dispatch(add("testProductId"));
   }
 
   return <Provider store={storeRef.current}>{children}</Provider>;
