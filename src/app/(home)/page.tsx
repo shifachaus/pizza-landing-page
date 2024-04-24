@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductCard, { Product } from "./components/product-card";
+import DataWrapper from "./components/data-wrapper";
 
 const products: Product[] = [
   {
@@ -42,8 +43,15 @@ const products: Product[] = [
 ];
 
 export default function Home() {
+  // external api data
+  const data = {
+    id: "1",
+    name: "Margarita Pizza",
+  };
+
   return (
     <>
+      <DataWrapper data={data} />
       <section className="bg-white">
         <div className="container flex items-center justify-between py-24">
           <div className="">
